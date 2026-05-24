@@ -39,7 +39,7 @@ export default function ActivityTile({ className = "" }: { className?: string })
       variants={tileVariants}
       whileHover={{ scale: 1.015 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className={`relative rounded-2xl border border-surface-border overflow-hidden bg-bg-700 grain-overlay cursor-default ${className}`}
+      className={`relative rounded-2xl border border-surface-border overflow-hidden bg-[#0d0d1a] grain-overlay shine-card cursor-default ${className}`}
       aria-label="Learning activity heatmap"
     >
       <div className="absolute inset-0 bg-mesh-cyan pointer-events-none" />
@@ -68,7 +68,11 @@ export default function ActivityTile({ className = "" }: { className?: string })
                 <motion.div
                   key={row}
                   initial={{ opacity: 0, scale: 0.5 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
+                  animate={
+                    inView
+                      ? { opacity: 1, scale: 1 }
+                      : { opacity: 0, scale: 0.5 }
+                  }
                   transition={{
                     delay: (col * 7 + row) * 0.008,
                     type: "spring",

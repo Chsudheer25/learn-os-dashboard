@@ -27,7 +27,7 @@ export default function HeroTile({ studentName, streak, className = "" }: HeroTi
       variants={tileVariants}
       whileHover={{ scale: 1.015 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className={`relative rounded-2xl border border-surface-border overflow-hidden bg-bg-700 grain-overlay cursor-default ${className}`}
+      className={`relative rounded-2xl border border-surface-border overflow-hidden bg-[#0d0d1a] grain-overlay shine-card cursor-default ${className}`}
       aria-label="Welcome hero tile"
     >
       <div className="absolute inset-0 bg-mesh-purple pointer-events-none" />

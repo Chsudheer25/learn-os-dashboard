@@ -69,7 +69,7 @@ export default function CourseTile({ course, index }: { course: Course; index: n
       variants={tileVariants}
       whileHover={{ scale: 1.02 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className={`relative rounded-2xl border ${t.border} overflow-hidden bg-bg-700 grain-overlay cursor-default group`}
+      className={`relative rounded-2xl border ${t.border} overflow-hidden bg-[#0d0d1a] grain-overlay shine-card cursor-default group`}
       aria-label={`Course: ${course.title}`}
     >
       <div className={`absolute inset-0 bg-gradient-to-br ${t.gradient} pointer-events-none`} />
