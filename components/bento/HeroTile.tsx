@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Flame, Star, Calendar } from "lucide-react";
 import { tileVariants } from "./BentoGrid";
@@ -10,18 +11,20 @@ interface HeroTileProps {
   className?: string;
 }
 
-// simple mock for now — could come from an API later
 const weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const weekActivity = [1, 1, 0, 1, 1, 1, 1];
 
-function getGreeting() {
-  const h = new Date().getHours();
-  if (h < 12) return "Good morning";
-  if (h < 17) return "Good afternoon";
-  return "Good evening";
-}
-
 export default function HeroTile({ studentName, streak, className = "" }: HeroTileProps) {
+  // greeting must be client-side only — server time may differ from client time
+  const [greeting, setGreeting] = useState("Good morning");
+
+  useEffect(() => {
+    const h = new Date().getHours();
+    if (h < 12) setGreeting("Good morning");
+    else if (h < 17) setGreeting("Good afternoon");
+    else setGreeting("Good evening");
+  }, []);
+
   return (
     <motion.article
       variants={tileVariants}
@@ -37,7 +40,7 @@ export default function HeroTile({ studentName, streak, className = "" }: HeroTi
 
         {/* greeting + name */}
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-medium text-white/40 mb-1">{getGreeting()} 👋</p>
+          <p className="text-sm font-medium text-white/40 mb-1">{greeting} 👋</p>
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
             <span className="bg-gradient-to-br from-white to-white/50 bg-clip-text text-transparent">
               Welcome back,{" "}

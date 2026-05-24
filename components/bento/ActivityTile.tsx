@@ -1,25 +1,23 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { Activity } from "lucide-react";
 import { tileVariants } from "./BentoGrid";
 
-// 10 weeks x 7 days — 0 means no activity, 1-4 is intensity level
-function buildGrid() {
-  const grid: number[][] = [];
-  for (let w = 0; w < 10; w++) {
-    const week: number[] = [];
-    for (let d = 0; d < 7; d++) {
-      week.push(Math.random() > 0.4 ? Math.ceil(Math.random() * 4) : 0);
-    }
-    grid.push(week);
-  }
-  return grid;
-}
-
-// generated once at module level so it's stable across re-renders
-const grid = buildGrid();
+// fixed grid — no Math.random() so server and client render identically
+const grid: number[][] = [
+  [1, 0, 3, 2, 1, 4, 0],
+  [2, 3, 1, 0, 4, 2, 1],
+  [0, 1, 2, 3, 1, 0, 2],
+  [4, 2, 0, 1, 3, 2, 4],
+  [1, 3, 2, 4, 0, 1, 2],
+  [0, 2, 4, 1, 2, 3, 0],
+  [3, 1, 0, 2, 4, 1, 3],
+  [2, 4, 1, 3, 0, 2, 1],
+  [1, 0, 3, 2, 4, 1, 0],
+  [4, 2, 1, 0, 3, 2, 4],
+];
 
 const intensityClass = [
   "bg-white/8",
