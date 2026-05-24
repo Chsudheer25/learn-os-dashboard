@@ -5,7 +5,7 @@ A high-fidelity, production-quality student learning dashboard built as a fronte
 ## 🚀 Live Demo
 
 - **GitHub:** https://github.com/Chsudheer25/learn-os-dashboard
-- **Vercel:** *(deploy link — add after Vercel deployment succeeds)*
+- **Vercel:** https://learn-os-dashboard-r7w7.vercel.app
 
 ---
 
